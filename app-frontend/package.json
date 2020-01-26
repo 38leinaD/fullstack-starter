@@ -1,0 +1,49 @@
+{
+  "name": "fullstack-starter",
+  "version": "1.0.0",
+  "description": "Starter project for web-development using the web's latest standards.",
+  "main": "src/AppMain.js",
+  "scripts": {
+    "postinstall": "snowpack --include './src/AppMain.js' --dest './src/lib/'",
+    "start": "browser-sync src -f src --single --cors --no-notify --single"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/38leinaD/fullstack-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/38leinaD/fullstack-starter/issues"
+  },
+  "homepage": "https://github.com/38leinaD/fullstack-starter#readme",
+  "devDependencies": {
+    "snowpack": "^1.1.2",
+    "browser-sync": "^2.26.7"
+  },
+  "dependencies": {
+    "@vaadin/router": "^1.4.1",
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  },
+  "snowpack": {
+    "webDependencies": [
+      "@vaadin/router",
+      "lit-element",
+      "lit-html/directives/async-append.js",
+      "lit-html/directives/async-replace.js",
+      "lit-html/directives/cache.js",
+      "lit-html/directives/class-map.js",
+      "lit-html/directives/guard.js",
+      "lit-html/directives/if-defined.js",
+      "lit-html/directives/repeat.js",
+      "lit-html/directives/style-map.js",
+      "lit-html/directives/unsafe-html.js",
+      "lit-html/directives/until.js"
+    ],
+    "dedupe": [
+      "lit-element",
+      "lit-html"
+    ]
+  }
+}

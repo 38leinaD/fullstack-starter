@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+apply plugin: 'war'
+apply plugin: 'maven'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+     mavenLocal()
+     mavenCentral()
+}
+
+
+//jee
+
+ext {
+    quarkusDependencies = {
+        implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+        implementation 'io.quarkus:quarkus-resteasy'
+        implementation 'io.quarkus:quarkus-smallrye-metrics'
+    }
+
+
+    jakartaeeDependencies = {
+        providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+        providedCompile 'org.eclipse.microprofile:microprofile:3.0'
+
+        testCompile 'org.glassfish.jersey.core:jersey-client:2.25.1'
+        testCompile 'junit:junit:4.12'
+    }
+
+    // quarkus or jakartaee
+    env = findProperty('env') ?: 'quarkus'    
+}
+
+
+
+dependencies project."${env}Dependencies"
+
+war {
+    archiveName 'app.war'
+}
+
+task deployTo(type: Copy, dependsOn: 'war') {
+    dependsOn 'build'
+    from war.archivePath
+    into "${System.env.DEPLOYMENT_DIR}/dropins"
+}
+//
+
+
+task copyFrontend(type: Copy) {
+    dependsOn ":app-frontend:build"
+    from "${buildDir}/../../app-frontend/src"
+    into "$buildDir/resources/main/META-INF/resources"
+    include "**/*"
+}
+
+processResources.finalizedBy copyFrontend
+
+group 'fullstack'
+version '1.0.0-SNAPSHOT'
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+

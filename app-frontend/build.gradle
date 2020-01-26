@@ -1,0 +1,24 @@
+apply plugin: 'base'
+
+task packageWebapp(type: Zip) {
+    baseName 'app-frontend'
+    extension 'jar'
+    from('src') {
+        into 'static' 
+    }
+}
+
+configurations {
+    webapp
+}
+configurations.default.extendsFrom(configurations.webapp)
+
+
+artifacts {
+    webapp(packageWebapp.archivePath) {
+        builtBy packageWebapp
+        type "jar"
+    }
+}
+
+assemble.dependsOn(packageWebapp)

@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    plugins {
+      id 'io.quarkus' version "${quarkusPluginVersion}"
+    }
+}
+
+include 'app-frontend'
+include 'app-backend'
+
+rootProject.name='fullstack-starter'
