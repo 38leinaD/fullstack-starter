@@ -1,7 +1,7 @@
 import { html, LitElement } from './lib/lit-element.js';
 import { until } from './lib/lit-html/directives/until.js';
 
-export default class ViewB extends LitElement {
+export default class DetailsView extends LitElement {
 
     static get properties() {
         return {
@@ -28,4 +28,4 @@ export default class ViewB extends LitElement {
 
 }
 
-customElements.define('view-b', ViewB);
+customElements.define('details-view', DetailsView);

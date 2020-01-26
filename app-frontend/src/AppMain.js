@@ -1,8 +1,9 @@
 import { html, LitElement } from './lib/lit-element.js';
 import { Router } from './lib/@vaadin/router.js';
 
-import './ViewA.js'
-import './ViewB.js'
+import './ListView.js'
+import './DetailsView.js'
+import './ErrorView.js'
 
 export default class AppMain extends LitElement {
 
@@ -28,13 +29,13 @@ export default class AppMain extends LitElement {
 
         this.router.setRoutes([
             {
-                name: 'viewa', path: '/', component: 'view-a'
+                name: 'list', path: '/', component: 'list-view'
             },
             {
-                name: 'viewb', path: '/b', component: 'view-b'
+                name: 'details', path: '/details', component: 'details-view'
             },
             {
-                path: '(.*)', component: 'view-a'
+                path: '(.*)', component: 'error-view'
             },
         ]);
 
@@ -53,28 +54,42 @@ export default class AppMain extends LitElement {
         return html`
         <main>
             <header>
-                <h2>header</h2>
+                <h2>Fullstack App Starter</h2>
             </header>
-            <nav>
                 ${this.router != null ?
                 html`
-                <ul>
-                    <li>
-                    <a href="${this.router.urlForName("viewa")}">View A</a>
-                    </li>
-                    <li>
-                        <a href="${this.router.urlForName("viewb")}">View B</a>
-                    </li>
-                </ul>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                      <a class="navbar-brand" href="#">Navbar</a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                          <li class="nav-item active">
+                            <a class="nav-link" href="${this.router.urlForName('list')}">List <span class="sr-only">(current)</span></a>
+                          </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                      </div>
+                    </nav>
                 ` : html``}
-            </nav>
+            
             <article id="outlet">
             </article>
             <footer>
-                <small>&copy; 2019</small>
+                <small>&copy; 2020</small>
             </footer>
         </main>
         `;
+    }
+
+    createRenderRoot() {
+        return this;
     }
 }
 
