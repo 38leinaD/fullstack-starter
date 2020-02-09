@@ -10,7 +10,6 @@ build/
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
 
 *target*
 *.jar
@@ -39,3 +38,4 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+!gradle-wrapper.jar
