@@ -12,8 +12,9 @@ repositories {
      mavenCentral()
 }
 
-
-//jee
+configurations {
+    webapp
+}
 
 ext {
     quarkusDependencies = {
@@ -38,6 +39,10 @@ ext {
 
 
 dependencies project."${env}Dependencies"
+
+dependencies {
+    webapp project(":app-frontend")
+}
 
 war {
     archiveName 'app.war'
