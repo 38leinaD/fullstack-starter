@@ -63,7 +63,7 @@ task copyFrontend(type: Copy) {
     include "**/*"
 }
 
-processResources.finalizedBy copyFrontend
+jar.dependsOn copyFrontend
 
 group 'fullstack'
 version '1.0.0-SNAPSHOT'

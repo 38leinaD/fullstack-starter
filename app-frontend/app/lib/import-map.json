@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@vaadin/router": "./@vaadin/router.js",
+    "lit-element": "./lit-element.js",
+    "lit-html": "./lit-html.js",
+    "lit-html/directives/until.js": "./lit-html/directives/until.js"
+  }
+}
