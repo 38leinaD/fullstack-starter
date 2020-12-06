@@ -21,7 +21,7 @@ export default class DetailsView extends LitElement {
     render() {
 
         return html`
-            <h1>View B</h1>
+            <h1 class="title">Title</h1>
             <p>Not much to see here...</p>
         `;
     }

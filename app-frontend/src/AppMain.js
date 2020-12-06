@@ -52,39 +52,91 @@ export default class AppMain extends LitElement {
 
     render() {
         return html`
-        <main>
-            <header>
-                <h2>Fullstack App Starter</h2>
-            </header>
+<div class="container">
                 ${this.router != null ?
                 html`
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    
 
-                      <a class="navbar-brand" href="#">Navbar</a>
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
+                    <nav class="navbar" role="navigation" aria-label="main navigation">
+                      <div class="navbar-brand">
+                        <a class="navbar-item" href="https://bulma.io">
+                          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                        </a>
 
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                          <li class="nav-item active">
-                            <a class="nav-link" href="${this.router.urlForName('list')}">List <span class="sr-only">(current)</span></a>
-                          </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                          <span aria-hidden="true"></span>
+                        </a>
+                      </div>
+
+                      <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-start">
+                          <a class="navbar-item">
+                            Home
+                          </a>
+
+                          <a class="navbar-item">
+                            Documentation
+                          </a>
+
+                          <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                              More
+                            </a>
+
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item" href="${this.router.urlForName('list')}">
+                                About
+                              </a>
+                              <a class="navbar-item" href="${this.router.urlForName('details')}">
+                                Jobs
+                              </a>
+                              <a class="navbar-item">
+                                Contact
+                              </a>
+                              <hr class="navbar-divider">
+                              <a class="navbar-item">
+                                Report an issue
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="navbar-end">
+                          <div class="navbar-item">
+                            <div class="buttons">
+                              <a class="button is-primary">
+                                <strong>Sign up</strong>
+                              </a>
+                              <a class="button is-light">
+                                Log in
+                              </a>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </nav>
+
+
+
                 ` : html``}
             
-            <article id="outlet">
-            </article>
-            <footer>
-                <small>&copy; 2020</small>
+           
+                <section id="outlet" class="section">
+                </section>
+            </div>
+
+            <footer class="footer">
+              <div class="content has-text-centered">
+                <p>
+                  <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                  is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                </p>
+              </div>
             </footer>
-        </main>
+
         `;
     }
 

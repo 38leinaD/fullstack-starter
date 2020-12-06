@@ -34,6 +34,7 @@ export default class ListView extends LitElement {
     render() {
 
         return html`
+            <h1 class="title">Title</h1>
 
             <form>
                 <div class="form-group">

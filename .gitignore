@@ -33,6 +33,9 @@ local.properties
 .settings/
 .loadpath
 
+# intellij
+.idea
+
 # External tool builders
 .externalToolBuilders/
 
